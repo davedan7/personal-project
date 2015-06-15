@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PersonalProject</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+
+    <%# <%= stylesheet_link_tag "materialize.css" %1> %>
+    <%# <%= stylesheet_link_tag "style.css" %1> %>
+
+  </head>
+  <body>
+
+    <%= render :partial => 'layouts/nav.html.erb' %>
+
+    <%# <% flash.each do |name, msg| %1> %>
+    <%#   <%= content_tag :div, msg, :class => "flash-#{name}" %1> %>
+    <%# <% end %1> %>
+
+  <%= yield %>
+
+  </body>
+</html>
