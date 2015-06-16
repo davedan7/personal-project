@@ -1,22 +1,35 @@
+<!-- dropdown -->
 <ul id="dropdown1" class="dropdown-content nav-item">
-  <li><p>Dropdown 1</p></li>
-  <li><p>Dropdown 2</p></li>
-    <li class="divider"></li>
+  <% if current_user.nil? %>
+    <li><%= link_to "Login with Github", "/auth/github" %></li>
+  <% else %>
+    <li><%= link_to "Log Out", logout_path, class: 'black-text'%></li>
+  <% end %>
+  <li><%= link_to "Searches", user_path(current_user), class: 'black-text' %></li>
+  <li class="divider"></li>
 </ul>
 
-<nav class="cyan darken-2" role="navigation">
+<nav class="teal darken-1" role="navigation">
   <div class="nav-wrapper container">
-    <a id="logo-container" href="/" class="brand-logo white-text" id="logo">Hireddit</a>
+    <a id="logo-container" href="/" class="brand-logo yellow-text text-lighten-3" id="logo">Job Trends</a>
     <ul class="right hide-on-med-and-down">
-      <li>Something</li>
-      <li ><a class="dropdown-button white-text" href="#!" data-activates="dropdown1">Your Dashboard<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      <% if current_user.nil? %>
+        <li><%= link_to "Login with Github", "/auth/github" %></li>
+      <% else %>
+        <li><%= link_to "Log Out", logout_path %></li>
+        <li ><a class="dropdown-button white-text" href="#!" data-activates="dropdown1">Your Dashboard<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      <% end %>
     </ul>
 
     <!-- Mobile Navbar -->
     <ul id="nav-mobile" class="side-nav cyan darken-2">
-      <li>Something</li>
-  </ul>
-  <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <% if current_user.nil? %>
+        <li><%= link_to "Login with Github", "/auth/github" %></li>
+      <% else %>
+        <li><%= link_to "Log Out", logout_path %></li>
+      <% end %>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
   </div>
 </nav>
 

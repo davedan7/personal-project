@@ -14,6 +14,7 @@ gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'pry'
 gem 'omniauth-github'
+gem 'figaro'
 
 
 group :development, :test do
