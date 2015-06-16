@@ -1,39 +1,30 @@
 <div class="main" ng-controller="SearchController">
-  <h1 class="center-align">User Portal</h1>
-  <h3 class="center-align">Job Info will Be displayed here</h3>
-  <form>
-    <div class="container">
-      <div class="input-field">
-        <input ng-model="zipcode" id="search" type="search" required>
-        <label for="search"><i class="mdi-action-search"></i></label>
-        <i class="mdi-navigation-close"></i>
-      </div>
-  </form>
+  <br>
+  <div class="container">
 
-  <form>
-    <div class="container">
-      <div class="input-field">
-        <input ng-model="searchWords" id="search" type="search" required>
-        <label for="search"><i class="mdi-action-search"></i></label>
-        <i class="mdi-navigation-close"></i>
-      </div>
-  </form>
-  <button type="button" ng-click="submitSearch()">Submit</button>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input ng-model="searchWords" id="words" type="text" class="validate">
+            <label for="words">Search Word</label>
+          </div>
+          <div class="input-field col s6">
+            <input ng-model="zipcode" id="zip" type="text" class="validate">
+            <label for="zip">ZipCode</label>
+          </div>
+        </div>
+      </form>
+      <button type="button" ng-click="submitSearch()">Submit</button>
     </div>
 
-
-    <!-- testing -->
     <div class="container">
       <div class="row">
-        <h2>Search</h2>
         <div class="jobSearch" ng-repeat="search in searchResults.value.items">
           <p>{{ search.description }}</p><br>
 
-          <p>Occurance of 'Javascript': {{ jsCounter(search.description) }}</p>
-
-            <!-- <a ng-href="{{search.link}}"</a> -->
         </div>
       </div>
     </div>
-    </div>
+  </div>
 </div>
