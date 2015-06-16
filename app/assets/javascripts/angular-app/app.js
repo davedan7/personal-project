@@ -2,9 +2,9 @@ var app = angular.module('jobsApp', []);
 // var app = angular.module('jobsApp', ['ngRoute']);
 // app.config(function($routeProvider) {
 //   $routeProvider
-//   .when('/', {
-//     controller: 'SearchesController',
-//     templateUrl: 'views/searches.html.erb'
+//   .when('/users/1', {
+//     controller: 'MainController',
+//     templateUrl: 'views/users/show.html.erb'
 //   })
 //   .otherwise({
 //     redirectTo: '/'
