@@ -1,0 +1,15 @@
+<div class="main">
+  <div class="container">
+
+    <h2>Recent Searches</h2>
+    <div class="row">
+      <div class="item col-md-4" ng-repeat="search in searches">
+        <a href="#/searches/{{$index}}">
+          <img class="img-responsive" ng-src="{{ search.url }}">
+          <p class="author">by {{ search.author }}</p>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PersonalProject</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+<head>
+  <title>PersonalProject</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
 
-    <%# <%= stylesheet_link_tag "materialize.css" %1> %>
-    <%# <%= stylesheet_link_tag "style.css" %1> %>
+  <%# <%= stylesheet_link_tag "materialize.css" %1> %>
+  <%# <%= stylesheet_link_tag "style.css" %1> %>
 
-  </head>
-  <body>
+</head>
+<body ng-app="jobsApp">
 
-    <%= render :partial => 'layouts/nav.html.erb' %>
+  <%= render :partial => 'layouts/nav.html.erb' %>
 
-    <%# <% flash.each do |name, msg| %1> %>
-    <%#   <%= content_tag :div, msg, :class => "flash-#{name}" %1> %>
-    <%# <% end %1> %>
+  <%# <% flash.each do |name, msg| %1> %>
+  <%#   <%= content_tag :div, msg, :class => "flash-#{name}" %1> %>
+  <%# <% end %1> %>
+  <div ng-view>
+    <%= yield %>
+    <%= render :partial =>'layouts/footer.html.erb' %>
+  </div>
+</body>
+<%= javascript_include_tag 'search' %>
+<!-- <<script src="assets/javascripts/angular-app/services/search.js"></script> -->
 
-  <%= yield %>
-  <%= render :partial =>'layouts/footer.html.erb' %>
-  </body>
 </html>

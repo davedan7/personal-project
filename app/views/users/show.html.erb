@@ -9,3 +9,16 @@
     </div>
   </form>
 </div>
+
+<!-- testing -->
+<div class="main" ng-controller="MainController">
+  <div class="container">
+    <div class="row">
+      <h2>Search</h2>
+        <div class="jobSearch" ng-repeat="search in searchResults.value.items">
+              <p>{{ search.description }}</p>
+              <p>{{search.link }}</p>
+        </div>
+    </div>
+  </div>
+</div>
