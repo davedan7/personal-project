@@ -4,14 +4,14 @@
     <li><%= link_to "Login with Github", "/auth/github" %></li>
   <% else %>
     <li><%= link_to "Log Out", logout_path, class: 'black-text'%></li>
+    <li><%= link_to "Searches", user_path(current_user), class: 'black-text' %></li>
   <% end %>
-  <li><%= link_to "Searches", user_path(current_user), class: 'black-text' %></li>
   <li class="divider"></li>
 </ul>
 
 <nav class="teal darken-1" role="navigation">
   <div class="nav-wrapper container">
-    <a id="logo-container" href="/" class="brand-logo yellow-text text-lighten-3" id="logo">Job Trends</a>
+    <a id="logo-container" href="/" class="brand-logo yellow-text text-lighten-3" id="logo">TechTrends</a>
     <ul class="right hide-on-med-and-down">
       <% if current_user.nil? %>
         <li><%= link_to "Login with Github", "/auth/github" %></li>
