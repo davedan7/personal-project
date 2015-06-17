@@ -24,5 +24,8 @@
 //= require_tree ./angular-app/models
 //= require_tree ./angular-app/services
 //= require_tree ./angular-app/controllers
+//= require_tree ./d3
+//= require_tree ./nvd3
+//= require_tree ./angular-nvd3
 
 //= require_tree .

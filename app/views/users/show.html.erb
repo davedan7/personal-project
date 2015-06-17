@@ -20,11 +20,11 @@
 
     <div class="container">
       <div class="row">
-        <div class="jobSearch" ng-repeat="search in searchResults.value.items">
+        <div class="jobSearchDisplay" ng-repeat="search in searchResults.value.items">
           <p>{{ search.description }}</p><br>
-
         </div>
       </div>
     </div>
   </div>
+  <nvd3 options="options" data="data"></nvd3> 
 </div>

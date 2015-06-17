@@ -1,4 +1,4 @@
-var app = angular.module('jobsApp', []);
+var app = angular.module('jobsApp', ["nvd3"]);
 // var app = angular.module('jobsApp', ['ngRoute']);
 // app.config(function($routeProvider) {
 //   $routeProvider
