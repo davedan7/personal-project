@@ -1,7 +1,8 @@
 app.controller('SearchController', ['$scope', 'jobSearch', function($scope, jobSearch){
-  $scope.zipcode = "";
-  $scope.searchWords = "";
+  $scope.zipcode = "80202";
+  $scope.searchWords = "web developer";
   $scope.searchDescription = "";
+  $scope.dataPoints = {javascript: 0, ruby: 0, rails: 0, node: 0, angular: 0, angularjs: 0, tdd: 0, mvc: 0, jquery: 0, json: 0};
 
   $scope.submitSearch = function() {
     jobSearch.search($scope.zipcode, $scope.searchWords)
@@ -14,17 +15,24 @@ app.controller('SearchController', ['$scope', 'jobSearch', function($scope, jobS
     // var wordCount = [];
     var items = data.value.items;
 
-    for (var i = items.length - 1; i >= 0; i--) {
-      console.log(wordCount(items[i].description.toLowerCase()));
+    for (var i = 0, len = items.length - 1; i <= len ; i++) {
+      var itemDescription = items[i].description;
+      var split = itemDescription.toLowerCase()
+                                 .replace(/\W/g, " ")
+                                 .split(/\s+/);
+      for (var x = 0; x < split.length; x++) {
+         $scope.dataPoints[split[x]]++;
+      }
     }
+    console.log($scope.dataPoints);
   };
 
-  var wordCount = function(input) {    // Counts words passed from wordParse
-    var split = input.replace(/[^a-zA-Z]/, " ").split(/\s+/),
-    datapoints = {javascript: 0, ruby: 0, rails: 0, node: 0, angular: 0, angularjs: 0};
-    for (var x = 0; x < split.length; x++) {
-        datapoints[split[x]]++;
-    }
+  // var wordCount = function(input) {    // Counts words passed from wordParse
+  //   var split = input.replace(/[^a-zA-Z]/, " ").split(/\s+/),
+  //   datapoints = {javascript: 0, ruby: 0, rails: 0, node: 0, angular: 0, angularjs: 0};
+  //   for (var x = 0; x < split.length; x++) {
+  //       datapoints[split[x]]++;
+  //   }
     // for (var x = 0; x < split.length; x++) {
     //   if (datapoints[split[x]] === undefined ) {
     //     datapoints[split[x]] = 1;
@@ -37,7 +45,7 @@ app.controller('SearchController', ['$scope', 'jobSearch', function($scope, jobS
 
     // });
 
-    return datapoints;
-  };
+  //   return datapoints;
+  // };
 
 }]);
