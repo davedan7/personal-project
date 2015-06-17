@@ -3,12 +3,21 @@ app.controller('SearchController', ['$scope', 'JobSearch', function($scope, JobS
   $scope.zipcode = "80202";
   $scope.searchWords = "web developer";
   $scope.searchDescription = "";
-  $scope.dataPoints = {javascript: 0, ruby: 0, rails: 0, node: 0, angular: 0, angularjs: 0, tdd: 0, mvc: 0, jquery: 0, json: 0};
+  $scope.dataPoints = [{key: "javascript", y: 0}, {key: "ruby", y: 0}, {key: "rails", y: 0}, {key: "node", y: 0}, {key: "angular", y: 0}, {key: "angularjs", y: 0}, {key: "tdd", y: 0}, {key: "mvc", y: 0}, {key: "jquery", y: 0}, {key: "json", y: 0}]; //ruby: 0, rails: 0, node: 0, angular: 0, angularjs: 0, tdd: 0, mvc: 0, jquery: 0, json: 0}];
+    //   {
+    //   key: "Javascript",
+    //   y: $scope.dataPoints.javascript
+    // },
+    // {
+    //   key: "Ruby",
+    //   y: $scope.dataPoints.ruby
+    // },
 
   $scope.submitSearch = function() {
     JobSearch.search($scope.zipcode, $scope.searchWords)
     .success(function(data){
       $scope.searchResults = phraseParse(data);
+      console.log("Working?");
     });
   };
 
@@ -16,17 +25,35 @@ app.controller('SearchController', ['$scope', 'JobSearch', function($scope, JobS
     // var wordCount = [];
     var items = data.value.items;
 
+    var megaDescriptions = []
     for (var i = 0, len = items.length - 1; i <= len ; i++) {
       var itemDescription = items[i].description;
       var split = itemDescription.toLowerCase()
         .replace(/\W/g, " ")
         .split(/\s+/);
-
-      for (var x = 0; x < split.length; x++) {
-        $scope.dataPoints[split[x]]++;
-      }
+      megaDescriptions.push(split);
+      // for (var x = 0; x < split.length; x++) {
+      //   for (var y = 0; y < $scope.dataPoints.length; y++) {
+      //     if (split[x] === $scope.dataPoints[y].key) {
+      //       $scope.dataPoints[y].y ++;
+      //     }
+      //     console.log($scope.dataPoints[y].key);
+      //   }
+      //   // $scope.dataPoints[split[x]]++;
+      // }
     }
-    console.log($scope.dataPoints);
+    var flattenedDescriptions = [].concat.apply([], megaDescriptions);
+
+    for (var x = 0; x < flattenedDescriptions.length; x++) {
+      for (var y = 0; y < $scope.dataPoints.length; y++) {
+        if (flattenedDescriptions[x] === $scope.dataPoints[y].key) {
+          $scope.dataPoints[y].y ++;
+        }
+        // console.log($scope.dataPoints[y].key);
+      }
+      // $scope.dataPoints[split[x]]++;
+    }
+    console.log(flattenedDescriptions);
   };
 
   // Pie Chart
@@ -93,6 +120,15 @@ app.controller('SearchController', ['$scope', 'JobSearch', function($scope, JobS
     }
   ];
   // End of Pie Chart
+
+  // $scope.data = angular.copy($scope.initData);
+
+  // $scope.onchange = function() {
+  //   $scope.data = [];
+  //   angular.foreach($scope.initData, function(value, index){
+  //     if ($scope.dataPoints[value.key]) $scope.data.push(value);
+  //   });
+  // };
 
 }]);
 // var wordCount = function(input) {    // Counts words passed from wordParse
